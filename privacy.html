@@ -1,0 +1,112 @@
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Exclusiveclis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script data-goatcounter="https://9023.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body class="bg-black font-sans text-white">
+    <nav class="bg-black text-white p-4 fixed w-full top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Exclusiveclis</h1>
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="text-white text-2xl"><i class="fas fa-home"></i></a>
+                <button id="hamburger" class="text-white md:hidden">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <ul id="nav-menu" class="hidden md:flex md:space-x-6">
+                <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+                <li><a href="#categories" class="hover:text-blue-400">Categories</a></li>
+                <li><a href="#hashtags" class="hover:text-blue-400">Hashtags</a></li>
+                <li><a href="privacy.html" class="hover:text-blue-400">Privacy Policy</a></li>
+                <li><a href="terms.html" class="hover:text-blue-400">Terms & Conditions</a></li>
+            </ul>
+        </div>
+        <ul id="mobile-menu" class="hidden bg-gray-800 text-white p-4">
+            <li><a href="index.html" class="block py-2 hover:text-blue-400">Home</a></li>
+            <li><a href="#categories" class="block py-2 hover:text-blue-400">Categories</a></li>
+            <li><a href="#hashtags" class="block py-2 hover:text-blue-400">Hashtags</a></li>
+            <li><a href="privacy.html" class="block py-2 hover:text-blue-400">Privacy Policy</a></li>
+            <li><a href="terms.html" class="block py-2 hover:text-blue-400">Terms & Conditions</a></li>
+        </ul>
+    </nav>
+
+    <section class="pt-20 py-10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6">Privacy Policy</h2>
+            <div class="text-lg">
+                <p class="mb-4">At Exclusiveclis, we value your privacy and are committed to protecting your personal information. This Privacy Policy outlines how we collect, use, and safeguard your data.</p>
+                <h3 class="text-xl font-semibold mb-2">Information Collection</h3>
+                <p class="mb-4">We use GoatCounter for analytics, which collects anonymized data about your visit, such as pages viewed and general location. No personally identifiable information is collected.</p>
+                <h3 class="text-xl font-semibold mb-2">Data Usage</h3>
+                <p class="mb-4">The data collected is used solely to improve our website and understand user behavior. We do not share this data with third parties except as required by law.</p>
+                <h3 class="text-xl font-semibold mb-2">Cookies</h3>
+                <p class="mb-4">We do not use cookies or similar tracking technologies beyond the analytics provided by GoatCounter.</p>
+                <h3 class="text-xl font-semibold mb-2">External Links</h3>
+                <p class="mb-4">Our website contains links to external sites, such as Telegram. We are not responsible for the privacy practices of these sites.</p>
+                <h3 class="text-xl font-semibold mb-2">Contact Us</h3>
+                <p class="mb-4">If you have any questions about this Privacy Policy, please contact us via <a href="https://t.me/Exclusiveclis" class="text-blue-400 hover:underline">Telegram</a>.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 Exclusiveclis. All rights reserved.</p>
+            <div class="mt-2">
+                <a href="privacy.html" class="hover:text-blue-400 mx-2">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-blue-400 mx-2">Terms & Conditions</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('hamburger').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
