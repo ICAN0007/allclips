@@ -74,7 +74,7 @@ fetch('videos.json')
 
         // Handle different page types
         if (type === 'home') {
-            document.title = 'Exclusiveclis';
+            document.title = 'Exclusiveclips';
             pageTitle.textContent = 'Featured Videos';
             const videosPerPage = 10;
             const page = getPageNumber(params);
@@ -84,7 +84,7 @@ fetch('videos.json')
         } else if (type === 'category' && params.get('name')) {
             const category = params.get('name').toLowerCase();
             const categoryVideos = sortedVideos.filter(video => video.category.toLowerCase() === category);
-            document.title = `${category.charAt(0).toUpperCase() + category.slice(1)} - Exclusiveclis`;
+            document.title = `${category.charAt(0).toUpperCase() + category.slice(1)} - Exclusiveclips`;
             pageTitle.textContent = `${category.charAt(0).toUpperCase() + category.slice(1)} Videos`;
             const videosPerPage = 10;
             const page = getPageNumber(params);
@@ -96,7 +96,7 @@ fetch('videos.json')
             }
         } else if (type === 'hashtag' && params.get('name')) {
             const hashtag = params.get('name');
-            document.title = `#${hashtag} - Exclusiveclis`;
+            document.title = `#${hashtag} - Exclusiveclips`;
             pageTitle.textContent = `#${hashtag} Videos`;
             const hashtagVideos = sortedVideos.filter(video => video.hashtags.includes(hashtag));
             contentArea.innerHTML = `<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">${hashtagVideos.map(video => `
@@ -121,11 +121,11 @@ fetch('videos.json')
                 contentArea.innerHTML = '<p class="text-red-500">Video not found.</p>';
                 return;
             }
-            document.title = `${video.title} - Exclusiveclis`;
+            document.title = `${video.title} - Exclusiveclips`;
             pageTitle.textContent = video.title;
             contentArea.innerHTML = `
                 <div class="p-4 text-white text-center">
-                    <p>This video is uploaded on the <i class="fab fa-telegram-plane"></i> <a href="https://t.me/Exclusiveclis" class="text-blue-400 hover:underline">@exclusiveclips4</a></p>
+                    <p>This video is uploaded on the <i class="fab fa-telegram-plane"></i> <a href="https://t.me/Exclusiveclips" class="text-blue-400 hover:underline">@exclusiveclips4</a></p>
                 </div>
                 <div class="relative bg-gray-900 rounded-lg shadow-md overflow-hidden">
                     <video controls class="w-full">
