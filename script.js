@@ -125,7 +125,7 @@ fetch('videos.json')
             pageTitle.textContent = video.title;
             contentArea.innerHTML = `
                 <div class="p-4 text-white text-center">
-                    <p>This video is uploaded on the <i class="fab fa-telegram-plane"></i> <a href="https://t.me/Exclusiveclips" class="text-blue-400 hover:underline">@exclusiveclips4</a></p>
+                    <p>This video is uploaded on the <i class="fab fa-telegram-plane"></i> <a href="https://t.me/Exclusiveclips4" class="text-blue-400 hover:underline">@exclusiveclips4</a></p>
                 </div>
                 <div class="relative bg-gray-900 rounded-lg shadow-md overflow-hidden">
                     <video controls class="w-full">
