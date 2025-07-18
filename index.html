@@ -42,42 +42,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ExclusiveClips4 - Desi Adult Videos</title>
+    <title>ExclusiveClips4</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <script async data-goatcounter="https://exclusiveclips4.goatcounter.com/count" src="//gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://exclusiveclips4.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
-<body class="bg-black text-white font-sans">
-    <header class="bg-gray-900 p-4 flex justify-between items-center">
-        <h1 class="text-2xl font-bold">ExclusiveClips4</h1>
-        <nav>
-            <a href="privacy.html" class="text-gray-300 hover:text-white mx-2">Privacy</a>
-            <a href="terms.html" class="text-gray-300 hover:text-white mx-2">Terms</a>
-        </nav>
-    </header>
-    <main class="container mx-auto p-4">
-        <div id="categoryFilter" class="mb-4">
-            <label for="category" class="mr-2">Filter by Category:</label>
-            <select id="category" class="bg-gray-800 text-white p-2 rounded">
-                <option value="all">All</option>
-            </select>
+<body class="bg-black font-sans text-white">
+    <nav class="bg-black text-white p-4 fixed w-full top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">ExclusiveClips4</h1>
+            <div class="flex items-center space-x-4">
+                <a href="index.html" class="text-white text-2xl"><i class="fas fa-home"></i></a>
+                <button id="hamburger" class="text-white md:hidden">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+            <ul id="nav-menu" class="hidden md:flex md:space-x-6">
+                <li><a href="index.html" class="hover:text-blue-400">Home</a></li>
+                <li><a href="#categories" class="hover:text-blue-400">Categories</a></li>
+                <li><a href="#hashtags" class="hover:text-blue-400">Hashtags</a></li>
+                <li><a href="privacy.html" class="hover:text-blue-400">Privacy Policy</a></li>
+                <li><a href="terms.html" class="hover:text-blue-400">Terms & Conditions</a></li>
+            </ul>
         </div>
-        <div id="videoContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
-        <div id="pagination" class="flex justify-center mt-4"></div>
-        <div id="videoPage" class="hidden">
-            <div id="videoPlayer" class="mb-4"></div>
-            <h2 id="videoTitle" class="text-xl font-bold"></h2>
-            <p id="videoViews" class="text-gray-400"></p>
-            <p id="videoHashtags" class="text-gray-400"></p>
-            <div id="relatedVideos" class="mt-4">
-                <h3 class="text-lg font-bold">Related Videos</h3>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4"></div>
+        <ul id="mobile-menu" class="hidden bg-gray-800 text-white p-4">
+            <li><a href="index.html" class="block py-2 hover:text-blue-400">Home</a></li>
+            <li><a href="#categories" class="block py-2 hover:text-blue-400">Categories</a></li>
+            <li><a href="#hashtags" class="block py-2 hover:text-blue-400">Hashtags</a></li>
+            <li><a href="privacy.html" class="block py-2 hover:text-blue-400">Privacy Policy</a></li>
+            <li><a href="terms.html" class="block py-2 hover:text-blue-400">Terms & Conditions</a></li>
+        </ul>
+    </nav>
+
+    <section id="main-content" class="pt-20 py-10">
+        <div class="container mx-auto px-4">
+            <h2 id="page-title" class="text-3xl font-bold mb-6"></h2>
+            <div id="content-area" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            <div id="related-videos" class="mt-6 hidden">
+                <h3 class="text-2xl font-bold mb-4">Related Videos</h3>
+                <div id="related-videos-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+            </div>
+            <div id="pagination" class="flex justify-center mt-6 space-x-2"></div>
+        </div>
+    </section>
+
+    <section id="categories" class="py-10 bg-gray-800">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6">Categories</h2>
+            <div id="category-list" class="flex flex-wrap gap-4"></div>
+        </div>
+    </section>
+
+    <section id="hashtags" class="py-10">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-6">Hashtags</h2>
+            <div id="hashtag-list" class="flex flex-wrap gap-3"></div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>© 2025 ExclusiveClips4. All rights reserved.</p>
+            <div class="mt-2">
+                <a href="https://t.me/exclusiveclips4" class="hover:text-blue-400 mx-2">
+                    <i class="fab fa-telegram-plane"></i> Join us on Telegram
+                </a>
+                <a href="privacy.html" class="hover:text-blue-400 mx-2">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-blue-400 mx-2">Terms & Conditions</a>
             </div>
         </div>
-    </main>
-    <footer class="bg-gray-900 p-4 text-center">
-        <p>&copy; 2025 ExclusiveClips4. All rights reserved.</p>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
